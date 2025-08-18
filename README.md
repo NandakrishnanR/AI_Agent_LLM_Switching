@@ -26,8 +26,8 @@ The goal is simple: **reliable answers with the right balance of speed, cost, an
 
 1. **Clone and setup**
    ```bash
-   git clone https://github.com/<you>/<repo>.git
-   cd <repo>
+   git clone https://github.com/NandakrishnanR/AI_Agent_LLM_Switching.git
+   cd AI_Agent_LLM_Switching
    python3 -m venv .venv
    source .venv/bin/activate
    cp .env.example .env
