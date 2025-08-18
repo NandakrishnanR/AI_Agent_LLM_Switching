@@ -5,20 +5,20 @@ from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
-# LangChain RAG pieces
+# LangChain RAG necessarz libraries
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.vectorstores import Chroma   # OK to use community import
-# (If you prefer new import: from langchain_chroma import Chroma)
+from langchain_community.vectorstores import Chroma   
 
-# Small model locally (works for you)
+
+# Small model 
 from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
 
-# Large model remotely (HF Inference)
+# Large model remoteli
 from huggingface_hub import InferenceClient
 
-# -------------------- Config --------------------
+# -------------------- Configurations --------------------
 load_dotenv()
 HF_TOKEN   = os.getenv("HF_TOKEN", "").strip()
 SMALL_ID   = os.getenv("SMALL_MODEL", "google/flan-t5-base")
@@ -27,7 +27,7 @@ EMB_ID     = os.getenv("EMB_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
 CHROMA_DIR = os.getenv("CHROMA_DIR", ".chroma")
 PROMPT_LEN_THRESHOLD = int(os.getenv("PROMPT_LEN_THRESHOLD", "220"))
 
-# -------------------- App -----------------------
+# -------------------- Api -----------------------
 app = FastAPI(title="RAG + LLM Switch (LangChain + HF)")
 
 # -------------------- Vector DB -----------------
