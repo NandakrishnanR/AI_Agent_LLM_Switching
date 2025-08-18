@@ -4,10 +4,12 @@ This project is a **Retrieval-Augmented Generation (RAG)** system powered by **L
 
 The goal is simple: **reliable answers with the right balance of speed, cost, and quality.**
 
-<img src="images/brave_screenshot_localhost.png" width="500">
 
+<p align="center">
+  <img src="brave_screenshot_localhost.png" alt="Small LLM Mode" width="50%">
+  <img src="brave_screenshot_localhost (1).png" alt="Large LLM Mode" width="40%">
+</p>
 
-<img src="images/brave_screenshot_localhost (1).png" width="500">
 ---
 
 ## ✨ Key Features
