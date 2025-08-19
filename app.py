@@ -15,7 +15,7 @@ from langchain_community.vectorstores import Chroma
 # Small model 
 from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
 
-# Large model remoteli
+# Large model 
 from huggingface_hub import InferenceClient
 
 # -------------------- Configurations --------------------
