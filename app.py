@@ -96,15 +96,15 @@ def choose_mode(user_mode: str, question: str, context: str) -> str:
     q_len = len(question)
     c_len = len(context)
 
-    # Case 1: Very long user question → large
+    # Case 1: Very long user question will done by large model
     if q_len > 60:
         return "large"
 
-    # Case 2: Context retrieved is big (heavy doc chunk) → large
+    # Case 2: Context retrieved is big (heavy doc chunk) by large model
     if c_len > 2500:
         return "large"
 
-    # Case 3: No context found at all → large
+    # Case 3: No context found at all aslo by large model
     if context.strip() == "(no context)":
         return "large"
 
