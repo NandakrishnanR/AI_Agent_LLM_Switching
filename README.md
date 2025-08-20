@@ -12,7 +12,7 @@ The goal is simple: **reliable answers with the right balance of speed, cost, an
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 - **RAG pipeline:** load PDFs → split → embed → store in vector DB → retrieve best context → answer.  
 - **Smart LLM router:** automatically decides whether to use *small* or *large* model.  
@@ -22,7 +22,7 @@ The goal is simple: **reliable answers with the right balance of speed, cost, an
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 1. **Clone and setup**
    ```bash
@@ -38,7 +38,7 @@ pip install -r requirements.txt
 uvicorn app:app --reload     ....#App runs on http://127.0.0.1:8000
 ⸻
 
-## 🔍 How It Works
+##  How It Works
 	1.	Upload a PDF → chunks are created + embeddings stored in vector DB.
 	2.	Ask a question → relevant chunks are retrieved.
 	3.	Router decides:
@@ -49,7 +49,7 @@ uvicorn app:app --reload     ....#App runs on http://127.0.0.1:8000
 
 ⸻
 
-## 📈 Scaling the System
+##  Scaling the System
 	•	Move vector DB from local Chroma to Qdrant Cloud / Pinecone.
 	•	Use stronger embeddings (e.g. bge-base or bge-large).
 	•	Add hybrid retrieval (dense + BM25).
@@ -58,13 +58,13 @@ uvicorn app:app --reload     ....#App runs on http://127.0.0.1:8000
 
 ⸻
 
-## 🛡️ Security
+##  Security
 	•	.env is ignored in Git to protect tokens.
 	•	Secrets managed via GitHub Actions / Secret Manager.
 	•	Push protection is enabled to block accidental leaks.
 
 ⸻
 
- ## 📜 License
+ ##  License
 
 Apache-2.0
