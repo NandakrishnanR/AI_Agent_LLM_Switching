@@ -1,4 +1,4 @@
-# AI Agent for RAG + LLM Switching
+# Adaptive AI Agent for RAG + LLM Switching
 
 This project is a **Retrieval-Augmented Generation (RAG)** system powered by **LangChain** and **Hugging Face**, with an *AI agent* that automatically switches between a **small local model** (fast, lightweight) and a **large remote model** (accurate, powerful).  
 
