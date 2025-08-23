@@ -6,8 +6,8 @@ The goal is simple: **reliable answers with the right balance of speed, cost, an
 
 
 <p align="center">
-  <img src="brave_screenshot_localhost.png" alt="Small LLM Mode" width="55%">
-  <img src="brave_screenshot_localhost (1).png" alt="Large LLM Mode" width="55%">
+  <img src="brave_screenshot_localhost.png" alt="Small LLM Mode" width="60%">
+  <img src="brave_screenshot_localhost (1).png" alt="Large LLM Mode" width="60%">
 </p>
 
 ---
