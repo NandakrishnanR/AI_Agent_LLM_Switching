@@ -42,9 +42,9 @@ uvicorn app:app --reload     ....#App runs on http://127.0.0.1:8000
 	1.	Upload a PDF → chunks are created + embeddings stored in vector DB.
 	2.	Ask a question → relevant chunks are retrieved.
 	3.	Router decides:
-	•	Long/complex question → large model
-	•	Simple/short question → small model
-	•	No context found → large model
+	 3.1 Long/complex question → large model
+	 3.2 Simple/short question → small model
+	 3.3 No context found → large model
 	4.	Response returned with reasoning + latency info.
 
 ⸻
