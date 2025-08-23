@@ -18,7 +18,7 @@ from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
 # Large model 
 from huggingface_hub import InferenceClient
 
-# -------------------- Configurations --------------------
+# Configurations 
 load_dotenv()
 HF_TOKEN   = os.getenv("HF_TOKEN", "").strip()
 SMALL_ID   = os.getenv("SMALL_MODEL", "google/flan-t5-base")
@@ -26,11 +26,9 @@ LARGE_ID   = os.getenv("LARGE_MODEL", "mistralai/Mistral-7B-Instruct-v0.2")
 EMB_ID     = os.getenv("EMB_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
 CHROMA_DIR = os.getenv("CHROMA_DIR", ".chroma")
 PROMPT_LEN_THRESHOLD = int(os.getenv("PROMPT_LEN_THRESHOLD", "220"))
-
-# -------------------- Api -----------------------
 app = FastAPI(title="RAG + LLM Switch (LangChain + HF)")
 
-# -------------------- Vector DB -----------------
+# Vector DB 
 os.makedirs(CHROMA_DIR, exist_ok=True)
 _embeddings = HuggingFaceEmbeddings(model_name=EMB_ID)
 def get_vs() -> Chroma:
@@ -38,7 +36,7 @@ def get_vs() -> Chroma:
 
 _split = RecursiveCharacterTextSplitter(chunk_size=900, chunk_overlap=120, separators=["\n\n","\n","."," "])
 
-# -------------------- Small LLM (local FLAN) ----
+# Small LLM (local FLAN)
 _small_pipe = None
 def small_generate(prompt: str, max_new_tokens: int = 220) -> str:
     global _small_pipe
@@ -49,7 +47,7 @@ def small_generate(prompt: str, max_new_tokens: int = 220) -> str:
     out = _small_pipe(prompt, max_new_tokens=max_new_tokens, do_sample=False, num_beams=4, temperature=0.2)
     return out[0]["generated_text"].strip()
 
-# -------------------- Large LLM (HF remote) -----
+#  Large LLM (HF remote)
 _large_client: Optional[InferenceClient] = None
 def large_generate(prompt: str, max_new_tokens: int = 300) -> str:
     global _large_client
@@ -77,7 +75,7 @@ def large_generate(prompt: str, max_new_tokens: int = 300) -> str:
                 last_err = e2
     raise HTTPException(502, f"Remote model error: {type(last_err).__name__}: {last_err}")
 
-# -------------------- Prompts -------------------
+# Prompts 
 SMALL_PROMPT = (
     "Answer ONLY from the context below. If answer not in context, say you don't know.\n\n"
     "Context:\n{context}\n\nQuestion: {question}\n\nAnswer:"
@@ -87,7 +85,7 @@ LARGE_PROMPT = (
     "Context:\n{context}\n\nQuestion: {question}\n\nAnswer:"
 )
 
-# -------------------- Router --------------------
+# Router
 def choose_mode(user_mode: str, question: str, context: str) -> str:
     # Respect manual override
     if user_mode in ("small", "large"):
@@ -111,7 +109,7 @@ def choose_mode(user_mode: str, question: str, context: str) -> str:
     # Default: small
     return "small"
 
-# -------------------- HTML UI -------------------
+# HTML UI 
 @app.get("/", response_class=HTMLResponse)
 def home():
     return HTMLResponse("""
@@ -200,7 +198,7 @@ async function ask(){
 </body></html>
 """)
 
-# -------------------- API -----------------------
+# API 
 class AskIn(BaseModel):
     question: str
     max_tokens: int = 220
